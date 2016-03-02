@@ -4,7 +4,7 @@ This module allows you to use Azure Blob Storage with the open source Parse Serv
 ### Usage
 ```
 var ParseServer         = require('parse-server').ParseServer;
-var AzureStorageAdapter = require('parse-server-azure-storage');
+var AzureStorageAdapter = require('parse-server-azure-storage').AzureStorageAdapter;
 
 var account = 'YOUR_AZURE_STORAGE_ACCOUNT_NAME';
 var container = 'YOUR_AZURE_STORAGE_CONTAINER_NAME';
