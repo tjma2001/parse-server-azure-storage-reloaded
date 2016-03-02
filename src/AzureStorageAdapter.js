@@ -3,10 +3,9 @@
 // Stores Parse files in Azure Blob Storage.
 
 import * as Azure from 'azure-storage';
-import { FilesAdapter } from './FilesAdapter';
 import requiredParameter from './RequiredParameter';
 
-export class AzureStorageAdapter extends FilesAdapter {
+export class AzureStorageAdapter {
   // Creates an Azure Storage Client.
   constructor(
     accountName = requiredParameter('AzureStorageAdapter requires an account name'),
@@ -14,8 +13,6 @@ export class AzureStorageAdapter extends FilesAdapter {
     { accessKey = '',
       directAccess = false } = {}
   ) {
-    super();
-
     this._accountName = accountName;
     this._accessKey = accessKey;
     this._container = container;
@@ -85,7 +82,7 @@ export class AzureStorageAdapter extends FilesAdapter {
           return reject(err);
         }
 
-        resolve(text);
+        resolve(new Buffer(text));
       });
     });
   }
