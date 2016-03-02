@@ -8,8 +8,6 @@ import requiredParameter from './RequiredParameter';
 
 export class AzureStorageAdapter extends FilesAdapter {
   // Creates an Azure Storage Client.
-  // Providing AWS access and secret keys is mandatory
-  // Region and bucket will use sane defaults if omitted
   constructor(
     accountName = requiredParameter('AzureStorageAdapter requires an account name'),
     container = requiredParameter('AzureStorageAdapter requires a container'),
@@ -27,8 +25,13 @@ export class AzureStorageAdapter extends FilesAdapter {
     this._client = Azure.createBlobService(this._accountName, this._accessKey);
   }
 
-  // For a given config object, filename, and data, store a file in Azure Blob Storage
-  // Returns a promise containing the Azure Blob Storage blob creation response
+  /**
+   * For a given config object, filename, and data, store a file in Azure Blob Storage
+   * @param  {object} config
+   * @param  {string} filename
+   * @param  {string} data
+   * @return {Promise} Promise containing the Azure Blob Storage blob creation response
+   */
   createFile(config, filename, data) {
     let containerParams = {
       publicAccessLevel: (this._directAccess) ? 'blob' : undefined
@@ -51,6 +54,12 @@ export class AzureStorageAdapter extends FilesAdapter {
     });
   }
 
+  /**
+   * Delete a file if found by filename
+   * @param  {object} config
+   * @param  {string} filename
+   * @return {Promise} Promise that succeeds with the result from Azure Storage
+   */
   deleteFile(config, filename) {
     return new Promise((resolve, reject) => {
       this._client.deleteBlob(this._container, filename, (err, res) => {
@@ -63,8 +72,12 @@ export class AzureStorageAdapter extends FilesAdapter {
     });
   }
 
-  // Search for and return a file if found by filename
-  // Returns a promise that succeeds with the result from Azure Storage
+  /**
+   * Search for and return a file if found by filename
+   * @param  {object} config
+   * @param  {string} filename
+   * @return {Promise} Promise that succeeds with the result from Azure Storage
+   */
   getFileData(config, filename) {
     return new Promise((resolve, reject) => {
       this._client.getBlobToText(this._container, filename, (err, text, blob, res) => {
@@ -77,8 +90,13 @@ export class AzureStorageAdapter extends FilesAdapter {
     });
   }
 
-  // Generates and returns the location of a file stored in Azure Blob Storage for the given request and filename
-  // The location is the direct Azure Blob Storage link if the option is set, otherwise we serve the file through parse-server
+  /**
+   * Generates and returns the location of a file stored in Azure Blob Storage for the given request and filename
+   * The location is the direct Azure Blob Storage link if the option is set, otherwise we serve the file through parse-server
+   * @param  {object} config
+   * @param  {string} filename
+   * @return {string} file's url
+   */
   getFileLocation(config, filename) {
     if (this._directAccess) {
       return `http://${this._accountName}.blob.core.windows.net/${this._container}/${filename}`;
