@@ -29,7 +29,7 @@ export class AzureStorageAdapter {
    * @param  {string} data
    * @return {Promise} Promise containing the Azure Blob Storage blob creation response
    */
-  createFile(config, filename, data) {
+  createFile(filename, data) {
     let containerParams = {
       publicAccessLevel: (this._directAccess) ? 'blob' : undefined
     };
@@ -57,7 +57,7 @@ export class AzureStorageAdapter {
    * @param  {string} filename
    * @return {Promise} Promise that succeeds with the result from Azure Storage
    */
-  deleteFile(config, filename) {
+  deleteFile(filename) {
     return new Promise((resolve, reject) => {
       this._client.deleteBlob(this._container, filename, (err, res) => {
           if (err) {
@@ -75,7 +75,7 @@ export class AzureStorageAdapter {
    * @param  {string} filename
    * @return {Promise} Promise that succeeds with the result from Azure Storage
    */
-  getFileData(config, filename) {
+  getFileData(filename) {
     return new Promise((resolve, reject) => {
       this._client.getBlobToText(this._container, filename, (err, text, blob, res) => {
         if (err) {
