@@ -1,5 +1,5 @@
 # Azure Storage Files Adapter for Parse Server
-<a href="https://www.npmjs.com/package/parse-server-azure-storage"><img src="https://badge.fury.io/js/parse-server-azure-storage.svg" alt="npm version" height="18"></a> <a href="https://david-dm.org/felixrieseberg/parse-server-azure-storage"><img src="https://david-dm.org/felixrieseberg/parse-server-azure-storage.svg" alt="dependencies" height="18px"></a>
+<a href="https://www.npmjs.com/package/parse-server-azure-storage"><img src="https://badge.fury.io/js/parse-server-azure-storage.svg" alt="npm version" height="18"></a> <a href="https://david-dm.org/felixrieseberg/parse-server-azure-storage"><img src="https://david-dm.org/felixrieseberg/parse-server-azure-storage.svg" alt="dependencies" height="18px"></a> <a href="https://travis-ci.org/felixrieseberg/parse-server-azure-storage"><img src="https://travis-ci.org/felixrieseberg/parse-server-azure-storage.svg?branch=master"></a> <a href="https://codecov.io/github/felixrieseberg/parse-server-azure-storage?branch=master"><img src="https://codecov.io/github/felixrieseberg/parse-server-azure-storage/coverage.svg?branch=master" alt="Coverage via Codecov" /></a>
 This module allows you to use Azure Blob Storage with the open source Parse Server, brought to you by your friends in Microsoft's Open Source Engineering team.
 
 ## Usage
@@ -7,6 +7,12 @@ First, ensure that you have an Azure Blob Storage account, with a container setu
 
 ```
 npm install parse-server-azure-storage
+```
+
+If you're using `parse-server` at version 2.2 (or below), please install with:
+
+```
+npm install parse-server-azure-storage@0.3.0
 ```
 
 #### Direct Access
