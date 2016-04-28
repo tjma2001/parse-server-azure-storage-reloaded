@@ -1,6 +1,6 @@
 {
   "name": "parse-server-azure-storage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Use Azure Blob Storage with Parse Server",
   "main": "lib/AzureStorageAdapter.js",
   "repository": {
