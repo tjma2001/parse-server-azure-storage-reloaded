@@ -2,8 +2,8 @@
 //
 // Stores Parse files in Azure Blob Storage.
 
-import * as Azure from 'azure-storage';
-import requiredParameter from './RequiredParameter';
+import * as Azure from 'azure-storage'
+import requiredParameter from './RequiredParameter'
 
 export class AzureStorageAdapter {
   // Creates an Azure Storage Client.
@@ -13,13 +13,13 @@ export class AzureStorageAdapter {
     { accessKey = '',
       directAccess = false } = {}
   ) {
-    this._accountName = accountName;
-    this._accessKey = accessKey;
-    this._container = container;
-    this._directAccess = directAccess;
+    this._accountName = accountName
+    this._accessKey = accessKey
+    this._container = container
+    this._directAccess = directAccess
 
     // Init client
-    this._client = Azure.createBlobService(this._accountName, this._accessKey);
+    this._client = Azure.createBlobService(this._accountName, this._accessKey)
   }
 
   /**
@@ -32,23 +32,23 @@ export class AzureStorageAdapter {
   createFile(filename, data) {
     let containerParams = {
       publicAccessLevel: (this._directAccess) ? 'blob' : undefined
-    };
+    }
 
     return new Promise((resolve, reject) => {
       this._client.createContainerIfNotExists(this._container, containerParams, (cerr, cresult, cresponse) => {
         if (cerr) {
-          return reject(cerr);
+          return reject(cerr)
         }
 
         this._client.createBlockBlobFromText(this._container, filename, data, (err, result) => {
           if (err) {
-            return reject(err);
+            return reject(err)
           }
 
-          resolve(result);
-        });
-      });
-    });
+          resolve(result)
+        })
+      })
+    })
   }
 
   /**
@@ -61,12 +61,12 @@ export class AzureStorageAdapter {
     return new Promise((resolve, reject) => {
       this._client.deleteBlob(this._container, filename, (err, res) => {
           if (err) {
-            return reject(err);
+            return reject(err)
           }
 
-          resolve(res);
-        });
-    });
+          resolve(res)
+        })
+    })
   }
 
   /**
@@ -79,12 +79,13 @@ export class AzureStorageAdapter {
     return new Promise((resolve, reject) => {
       this._client.getBlobToText(this._container, filename, (err, text, blob, res) => {
         if (err) {
-          return reject(err);
+          console.error('error getting blob', err)
+          return reject(err)
         }
 
-        resolve(new Buffer(text));
-      });
-    });
+        resolve(new Buffer(text))
+      })
+    })
   }
 
   /**
@@ -96,10 +97,10 @@ export class AzureStorageAdapter {
    */
   getFileLocation(config, filename) {
     if (this._directAccess) {
-      return `https://${this._accountName}.blob.core.windows.net/${this._container}/${filename}`;
+      return `https://${this._accountName}.blob.core.windows.net/${this._container}/${filename}`
     }
-    return (`${config.mount}/files/${config.applicationId}/${encodeURIComponent(filename)}`);
+    return (`${config.mount}/files/${config.applicationId}/${encodeURIComponent(filename)}`)
   }
 }
 
-export default AzureStorageAdapter;
+export default AzureStorageAdapter
