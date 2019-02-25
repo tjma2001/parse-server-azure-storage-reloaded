@@ -6,13 +6,7 @@ This module allows you to use Azure Blob Storage with the open source Parse Serv
 First, ensure that you have an Azure Blob Storage account, with a container setup. Then, install the adapter:
 
 ```
-npm install parse-server-azure-storage
-```
-
-If you're using `parse-server` at version 2.2 (or below), please install with:
-
-```
-npm install parse-server-azure-storage@0.3.0
+npm install parse-server-azure-storage-reloaded
 ```
 
 #### Direct Access
@@ -41,4 +35,4 @@ var api = new ParseServer({
 ```
 
 ## License
-The MIT License (MIT); Copyright (c) 2016 Felix Rieseberg and Microsoft Corporation. Please see `LICENSE` for details.
+The MIT License (MIT); Copyright (c) 2016 Felix Rieseberg; Copyright (c) 2019 Taariq Mullins and Microsoft Corporation. Please see `LICENSE` for details.
