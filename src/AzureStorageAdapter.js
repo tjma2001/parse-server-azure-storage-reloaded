@@ -4,7 +4,7 @@
 
 const Azure = require('azure-storage')
 const requiredParameter = require('./RequiredParameter')
-const streams = require('memory-streams')
+const Stream = require('stream')
 
 export class AzureStorageAdapter {
   // Creates an Azure Storage Client.
@@ -78,19 +78,17 @@ export class AzureStorageAdapter {
    */
   getFileData(filename) {
     return new Promise((resolve, reject) => {
-      const fileStream = new streams.WriteableStream()
-      this._client.getBlobToStream(this._container, filename, fileStream, (err, result) => {
-        err && reject (err)
-        resolve(Buffer.from(fileStream))
-      })
-      // this._client.getBlobToText(this._container, filename, (err, text, blob, res) => {
-      //   if (err) {
-      //     console.error('error getting blob', err)
-      //     return reject(err)
-      //   }
+      let buffer = Buffer.from('')
+      const writeable = new Stream.Writable
+      writeable._write = (object, encoding, done) => {
+        buffer = Buffer.concat([buffer, object])
+        done()
+      }
 
-      //   resolve(new Buffer(text))
-      // })
+      this._client.getBlobToStream(this._container, filename, writeable, (err, result) => {
+        err && reject (err)
+        resolve(buffer)
+      })
     })
   }
 
