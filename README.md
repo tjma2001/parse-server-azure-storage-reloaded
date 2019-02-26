@@ -1,5 +1,5 @@
 # Azure Storage Files Adapter for Parse Server
-<a href="https://www.npmjs.com/package/parse-server-azure-storage"><img src="https://badge.fury.io/js/parse-server-azure-storage.svg" alt="npm version" height="18"></a> <a href="https://david-dm.org/felixrieseberg/parse-server-azure-storage"><img src="https://david-dm.org/felixrieseberg/parse-server-azure-storage.svg" alt="dependencies" height="18px"></a> <a href="https://travis-ci.org/felixrieseberg/parse-server-azure-storage"><img src="https://travis-ci.org/felixrieseberg/parse-server-azure-storage.svg?branch=master"></a> <a href="https://codecov.io/github/felixrieseberg/parse-server-azure-storage?branch=master"><img src="https://codecov.io/github/felixrieseberg/parse-server-azure-storage/coverage.svg?branch=master" alt="Coverage via Codecov" /></a>
+<a href="https://www.npmjs.com/package/parse-server-azure-storage-relaoded"><img src="https://badge.fury.io/js/parse-server-azure-storage.svg" alt="npm version" height="18"></a> <a href="https://david-dm.org/felixrieseberg/parse-server-azure-storage"><img src="https://david-dm.org/felixrieseberg/parse-server-azure-storage.svg" alt="dependencies" height="18px"></a> <a href="https://travis-ci.org/felixrieseberg/parse-server-azure-storage"><img src="https://travis-ci.org/felixrieseberg/parse-server-azure-storage.svg?branch=master"></a> <a href="https://codecov.io/github/felixrieseberg/parse-server-azure-storage?branch=master"><img src="https://codecov.io/github/felixrieseberg/parse-server-azure-storage/coverage.svg?branch=master" alt="Coverage via Codecov" /></a>
 This module allows you to use Azure Blob Storage with the open source Parse Server, brought to you by your friends in Microsoft's Open Source Engineering team.
 
 ## Usage
@@ -16,7 +16,7 @@ If your files can be public, you'll win performance by accessing files directly 
 
 ```
 var ParseServer         = require('parse-server').ParseServer;
-var AzureStorageAdapter = require('parse-server-azure-storage').AzureStorageAdapter;
+var AzureStorageAdapter = require('parse-server-azure-storage-reloaded').AzureStorageAdapter;
 
 var account = 'YOUR_AZURE_STORAGE_ACCOUNT_NAME';
 var container = 'YOUR_AZURE_STORAGE_CONTAINER_NAME';
