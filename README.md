@@ -1,5 +1,6 @@
 # Azure Storage Files Adapter for Parse Server
 <a href="https://www.npmjs.com/package/parse-server-azure-storage-relaoded"><img src="https://badge.fury.io/js/parse-server-azure-storage-reloaded.svg" alt="npm version" height="18"></a> <a href="https://david-dm.org/tjma2001/parse-server-azure-storage-reloaded"><img src="https://david-dm.org/tjma2001/parse-server-azure-storage-reloaded.svg" alt="dependencies" height="18px"></a> <a href='https://semaphoreci.com/tjma2001/parse-server-azure-storage-reloaded'> <img src='https://semaphoreci.com/api/v1/tjma2001/parse-server-azure-storage-reloaded/branches/master/badge.svg' alt='Build Status'></a>
+
 This module allows you to use Azure Blob Storage with the open source Parse Server, brought to you by your friends in Microsoft's Open Source Engineering team.
 
 ## Usage
