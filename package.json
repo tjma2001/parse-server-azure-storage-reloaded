@@ -5,7 +5,7 @@
   "main": "lib/AzureStorageAdapter.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tjma2001/parse-server-azure-storage"
+    "url": "https://github.com/tjma2001/parse-server-azure-storage-reloaded"
   },
   "files": [
     "lib/",
