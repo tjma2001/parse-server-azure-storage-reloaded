@@ -16,8 +16,8 @@
   "dependencies": {
     "@babel/core": "^7.4.3",
     "azure-storage": "2.10.2",
-    "babel-polyfill": "6.5.0",
-    "babel-runtime": "6.5.0",
+    "babel-polyfill": "6.26.0",
+    "babel-runtime": "6.26.0",
     "memory-streams": "0.1.3"
   },
   "devDependencies": {
